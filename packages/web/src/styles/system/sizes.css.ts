@@ -28,6 +28,9 @@ export type MeasurementKeys =
     | 52
     | 56
     | "1/2"
+    | "1/3"
+    | "1/4"
+    | "5/12"
     | "11/12";
 export type SizingKeys = "full";
 
@@ -60,6 +63,9 @@ export const measurementValues: Record<MeasurementKeys, string> = {
     52: "13rem",
     56: "14rem",
     "1/2": "50%",
+    "1/3": `${(1 / 3) * 100}%`,
+    "1/4": "25%",
+    "5/12": `${(5 / 12) * 100}%`,
     "11/12": `${(11 / 12) * 100}%`,
 };
 

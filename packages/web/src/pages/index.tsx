@@ -7,7 +7,6 @@ export default function IndexPage() {
     return (
         <>
             <NextSeo title="Home" />
-            <p>ggg</p>
         </>
     );
 }

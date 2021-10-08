@@ -13,5 +13,8 @@ export const positioningProperties = defineProperties({
             "center-x": "translateX(-50%)",
             "center-y": "translateY(-50%)",
         },
+        overflowY: ["auto", "hidden"],
+        overflowX: ["auto", "hidden"],
+        overflow: ["auto", "hidden"],
     },
 });

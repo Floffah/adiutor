@@ -4,6 +4,7 @@ import { responsiveProperties } from "./responsive.css";
 import { positioningProperties } from "./positioning.css";
 import { sizingProperties } from "./sizing.css";
 import { borderProperties } from "./border.css";
+import { animationProperties } from "./animation.css";
 
 export const sprinkles = createSprinkles(
     colourProperties,
@@ -11,4 +12,5 @@ export const sprinkles = createSprinkles(
     positioningProperties,
     sizingProperties,
     borderProperties,
+    animationProperties,
 );

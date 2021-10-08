@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
-import { DesktopLoginContainer } from "./Login.css";
+import {
+    DesktopLeftContainer,
+    DesktopLeftContainerFlexbox,
+    DesktopLeftContainerTagline,
+    DesktopLoginContainer,
+    MobileLoginContainer,
+} from "./Login.css";
 
 export function Login() {
     const [mobileViewShown, setMobileViewShown] = useState(false);
 
     useEffect(() => {
         const checkSize = () => {
-            const isDesktopSize = window.screen.width >= 700;
+            const isDesktopSize = window.innerWidth >= 700;
 
             if (isDesktopSize && mobileViewShown) setMobileViewShown(false);
             else if (!isDesktopSize && !mobileViewShown)
@@ -22,5 +28,21 @@ export function Login() {
         };
     }, [mobileViewShown]);
 
-    return <div className={DesktopLoginContainer}></div>;
+    return (
+        <div
+            className={
+                mobileViewShown ? MobileLoginContainer : DesktopLoginContainer
+            }
+        >
+            {!mobileViewShown && (
+                <div className={DesktopLeftContainer}>
+                    <div className={DesktopLeftContainerFlexbox}>
+                        <h1 className={DesktopLeftContainerTagline}>
+                            Ready to join an advanced community of students?
+                        </h1>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
 }
