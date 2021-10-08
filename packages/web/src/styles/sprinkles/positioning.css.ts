@@ -7,6 +7,11 @@ export const positioningProperties = defineProperties({
         top: measurementValues,
         left: measurementValues,
         right: measurementValues,
-        bottom: measurementValues
+        bottom: measurementValues,
+        transform: {
+            center: "translate(-50%, -50%)",
+            "center-x": "translateX(-50%)",
+            "center-y": "translateY(-50%)",
+        },
     },
 });

@@ -6,10 +6,22 @@ import { AppRouter } from "../lib/api/trpc/router";
 import { Provider } from "next-auth/client";
 import { darkThemeClass } from "../styles/themes/darkTheme.css";
 import { appContainer } from "../styles/app.css";
+import { DefaultSeo } from "next-seo";
 
 const App: FC<AppProps> = (p) => {
     return (
         <>
+            <DefaultSeo
+                titleTemplate="%s | Adiutor"
+                defaultTitle="Adiutor"
+                description="School tools, assistant, and community"
+                openGraph={{
+                    locale: "en",
+                    url: "https://adiutor.floffah.dev",
+                    description: "School tools, assistant, and community",
+                    site_name: "Adiutor",
+                }}
+            />
             <p.Component {...p.pageProps} />
         </>
     );

@@ -1,4 +1,13 @@
+import { NextSeo } from "next-seo";
+import { useValidSession } from "../lib/hooks/session";
 
 export default function IndexPage() {
-    return <p>hh</p>;
+    useValidSession();
+
+    return (
+        <>
+            <NextSeo title="Home" />
+            <p>ggg</p>
+        </>
+    );
 }

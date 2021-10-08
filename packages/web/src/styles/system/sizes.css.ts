@@ -1,6 +1,35 @@
 // inspired by tailwind rem increments (1/4 increment * 4)
-export type MeasurementKeys = 0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|20|24|28|32|36|40|44|48|52|56
-export type SizingKeys = "full"
+export type MeasurementKeys =
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 20
+    | 24
+    | 28
+    | 32
+    | 36
+    | 40
+    | 44
+    | 48
+    | 52
+    | 56
+    | "1/2"
+    | "11/12";
+export type SizingKeys = "full";
 
 export const measurementValues: Record<MeasurementKeys, string> = {
     0: "0",
@@ -29,10 +58,12 @@ export const measurementValues: Record<MeasurementKeys, string> = {
     44: "11rem",
     48: "12rem",
     52: "13rem",
-    56: "14rem"
-}
+    56: "14rem",
+    "1/2": "50%",
+    "11/12": `${(11 / 12) * 100}%`,
+};
 
 export const sizingValues: Record<SizingKeys | MeasurementKeys, string> = {
     ...measurementValues,
-    full: "100%"
-}
+    full: "100%",
+};
