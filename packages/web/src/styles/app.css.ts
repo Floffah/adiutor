@@ -1,8 +1,8 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 import { sprinkles } from "./sprinkles/sprinkles.css";
-import { colours } from "./system/colours.css";
 import { sizingValues } from "./system/sizes.css";
 import { PoppinsFont } from "./system/font.css";
+import { vars } from "./themes/theme.css";
 
 globalStyle("html, body", {
     // fontFamily:
@@ -15,22 +15,25 @@ globalStyle("html, body", {
 });
 
 globalStyle("p", {
-    color: colours.gray100,
+    color: vars.colour.text.default,
     fontSize: sizingValues[4],
     lineHeight: sizingValues[7],
 });
 
 globalStyle("h1, h2, h3, h4, h5, h6", {
-    color: colours.gray200,
+    color: vars.colour.text.header,
 });
 
 export const appContainer = style([
+    {
+        backgroundColor: vars.colour.background,
+    },
     sprinkles({
-        backgroundColor: "gray700",
         position: "fixed",
         top: 0,
         left: 0,
         width: "full",
         height: "full",
+        transition: "colours",
     }),
 ]);

@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
                         href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
                         rel="stylesheet"
                     />
-                    <link href="/fonts/JetBrainsMono.css" rel="stylesheet" />
+                    {/*<link href="/fonts/JetBrainsMono.css" rel="stylesheet" />*/}
                 </Head>
                 <body>
                     <Main />

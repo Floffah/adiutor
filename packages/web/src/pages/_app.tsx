@@ -1,14 +1,32 @@
 import { AppProps } from "next/app";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import "../styles/app.css";
 import { withTRPC } from "@trpc/next";
 import { AppRouter } from "../lib/api/trpc/router";
-import { Provider } from "next-auth/client";
-import { darkThemeClass } from "../styles/themes/darkTheme.css";
+import { Provider, useSession } from "next-auth/client";
 import { appContainer } from "../styles/app.css";
 import { DefaultSeo } from "next-seo";
+import "/public/fonts/JetbrainsMono.css";
+import { useRouter } from "next/router";
+import { useAtom } from "jotai";
+import { themeAtom } from "../state/view";
+
+export const allowedUnauthPages = ["/login"];
 
 const App: FC<AppProps> = (p) => {
+    const [session, loading] = useSession();
+    const router = useRouter();
+
+    useEffect(() => {
+        console.log(router.pathname);
+        if (
+            !loading &&
+            !session &&
+            !allowedUnauthPages.includes(router.pathname)
+        )
+            router.push("/login");
+    }, [session, loading, router]);
+
     return (
         <>
             <DefaultSeo
@@ -39,9 +57,11 @@ const TRPCApp = withTRPC<AppRouter>({
 })(App);
 
 export default function BoundariedApp(p: AppProps) {
+    const [theme] = useAtom(themeAtom);
+
     return (
         <Provider>
-            <div className={`${appContainer} ${darkThemeClass}`}>
+            <div className={`${appContainer} ${theme}`}>
                 {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                 {/* @ts-ignore */}
                 <TRPCApp {...p} />

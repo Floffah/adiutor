@@ -1,11 +1,17 @@
 import { style } from "@vanilla-extract/css";
 import { sprinkles } from "../../../styles/sprinkles/sprinkles.css";
+import { vars } from "../../../styles/themes/theme.css";
 import libraryStockImage from "/public/images/zaini-izzuddin-55btQzyDiO8-unsplash.jpg";
 
+// container
+
 const LoginContainerCommon = style([
+    {
+        backgroundColor: vars.colour.modal.background,
+        boxShadow: "5px 5px 8px rgba(0,0,0,0.2)",
+    },
     sprinkles({
         overflow: "auto",
-        backgroundColor: "gray800",
         transition: "all",
         transitionDuration: 200,
     }),
@@ -32,6 +38,9 @@ export const MobileLoginContainer = style([
     }),
 ]);
 
+// left
+
+const imageoverlay = vars.colour.login.imageOverlayColour;
 export const DesktopLeftContainer = style([
     sprinkles({
         height: "full",
@@ -39,16 +48,12 @@ export const DesktopLeftContainer = style([
         overflow: "auto",
     }),
     {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${libraryStockImage.src})`,
+        backgroundImage: `linear-gradient(rgba(${imageoverlay}, 0.5), rgba(${imageoverlay}, 0.5)), url(${libraryStockImage.src})`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
     },
 ]);
-
-// export const DesktopLeftContainerBlur = style([
-//     sprinkles({ width: "full", height: "full" }),
-// ]);
 
 export const DesktopLeftContainerFlexbox = style([
     sprinkles({
@@ -65,20 +70,64 @@ export const DesktopLeftContainerFlexbox = style([
 export const DesktopLeftContainerTagline = style([
     sprinkles({
         position: "relative",
-        // transform: "center",
-        // top: "1/2",
-        // left: "1/2",
-        // width: "full",
-        // height: "full",
-        color: "gray100",
     }),
     {
         margin: "auto",
         textAlign: "center",
-        // mixBlendMode: "exclusion",
         height: "fit-content",
-        // color: "white",
-        // textShadow:
-        // "-1px 1px 2px black, 1px 1px 2px black, 1px -1px 0 black, -1px -1px 0 black",
     },
 ]);
+
+// right
+
+export const DesktopRightContainer = style([
+    sprinkles({
+        width: "7/12",
+        height: "full",
+        right: 0,
+        top: 0,
+        position: "absolute",
+        overflow: "auto",
+    }),
+]);
+
+export const DesktopRightContainerLoginHeader = style([
+    { margin: "5px 0 0 5px", textAlign: "center" },
+]);
+
+export const DesktopRightContainerButtonContainer = style([
+    sprinkles({
+        transform: "center",
+        position: "absolute",
+        top: "1/2",
+        left: "1/2",
+    }),
+]);
+
+export const RightContainerDiscordButton = style([
+    sprinkles({
+        borderRadius: "lg",
+    }),
+    {
+        backgroundColor: "#5865F2",
+        width: "fit-content",
+        height: "fit-content",
+        padding: "9px 30px 0 30px",
+        userSelect: "none",
+        margin: "auto",
+        cursor: "pointer",
+    },
+]);
+
+export const RightContainerDiscordButtonTextContainer = style({
+    margin: "0",
+});
+
+export const RightContainerDiscordButtonText = style({
+    verticalAlign: "top",
+});
+
+// export const RightContainerNoticeText = style({
+//     margin: "2px 0 0 0",
+//     color: `rgba(${vars.colour.text.default}, 0.5)`,
+// });
