@@ -6,7 +6,7 @@ import { AppRouter } from "../lib/api/trpc/router";
 import { Provider, useSession } from "next-auth/client";
 import { appContainer } from "../styles/app.css";
 import { DefaultSeo } from "next-seo";
-import "/public/fonts/JetbrainsMono.css";
+import "/public/fonts/JetBrainsMono.css";
 import { useRouter } from "next/router";
 import { useAtom } from "jotai";
 import { themeAtom } from "../lib/state/view";
