@@ -1,9 +1,14 @@
 import { defineProperties } from "@vanilla-extract/sprinkles";
 import { sizingValues } from "../system/sizes.css";
 
+const contentSizes = {
+    ...sizingValues,
+    fit: "fit-content",
+};
+
 export const sizingProperties = defineProperties({
     properties: {
-        width: sizingValues,
-        height: sizingValues
-    }
-})
+        width: contentSizes,
+        height: contentSizes,
+    },
+});

@@ -2,9 +2,11 @@ import { style } from "@vanilla-extract/css";
 import { sprinkles } from "../../../styles/sprinkles/sprinkles.css";
 import { vars } from "../../../styles/themes/theme.css";
 import libraryStockImage from "/public/images/zaini-izzuddin-55btQzyDiO8-unsplash.jpg";
+import { colours } from "../../../styles/system/colours.css";
 
 // container
 
+// common values between mobile and desktop login containers
 const LoginContainerCommon = style([
     {
         backgroundColor: vars.colour.modal.background,
@@ -12,11 +14,12 @@ const LoginContainerCommon = style([
     },
     sprinkles({
         overflow: "auto",
-        transition: "all",
-        transitionDuration: 200,
+        // transition: "all",
+        // transitionDuration: 200,
     }),
 ]);
 
+// component container for desktop
 export const DesktopLoginContainer = style([
     LoginContainerCommon,
     sprinkles({
@@ -30,6 +33,7 @@ export const DesktopLoginContainer = style([
     }),
 ]);
 
+// component container for mobile
 export const MobileLoginContainer = style([
     LoginContainerCommon,
     sprinkles({
@@ -41,6 +45,8 @@ export const MobileLoginContainer = style([
 // left
 
 const imageoverlay = vars.colour.login.imageOverlayColour;
+// the container for the left-side content on desktop which also contains
+// the image cover to make the text more legible
 export const DesktopLeftContainer = style([
     sprinkles({
         height: "full",
@@ -55,6 +61,7 @@ export const DesktopLeftContainer = style([
     },
 ]);
 
+// the flexbox that allows the text to center properly above the image on desktop
 export const DesktopLeftContainerFlexbox = style([
     sprinkles({
         width: "full",
@@ -67,6 +74,7 @@ export const DesktopLeftContainerFlexbox = style([
     },
 ]);
 
+// the actual text displayed in the left side on desktop
 export const DesktopLeftContainerTagline = style([
     sprinkles({
         position: "relative",
@@ -80,6 +88,7 @@ export const DesktopLeftContainerTagline = style([
 
 // right
 
+// the box that contains the right-side content on desktop
 export const DesktopRightContainer = style([
     sprinkles({
         width: "7/12",
@@ -91,19 +100,23 @@ export const DesktopRightContainer = style([
     }),
 ]);
 
-export const DesktopRightContainerLoginHeader = style([
-    { margin: "5px 0 0 5px", textAlign: "center" },
+// the header text on desktop and mobile
+export const LoginHeader = style([
+    { margin: "5px 0 10px 0", textAlign: "center", width: "fit" },
 ]);
 
+// the container for the right-side buttons on desktop
 export const DesktopRightContainerButtonContainer = style([
     sprinkles({
         transform: "center",
         position: "absolute",
         top: "1/2",
         left: "1/2",
+        width: "fit",
     }),
 ]);
 
+// the continue with discord button
 export const RightContainerDiscordButton = style([
     sprinkles({
         borderRadius: "lg",
@@ -119,15 +132,33 @@ export const RightContainerDiscordButton = style([
     },
 ]);
 
+// the text and image container inside the discord button
 export const RightContainerDiscordButtonTextContainer = style({
     margin: "0",
 });
 
+// the actual text inside the discord button container
 export const RightContainerDiscordButtonText = style({
     verticalAlign: "top",
+    color: colours.gray100,
 });
 
 // export const RightContainerNoticeText = style({
 //     margin: "2px 0 0 0",
 //     color: `rgba(${vars.colour.text.default}, 0.5)`,
 // });
+
+// mobile content
+
+// the container for the login content on mobile that centers everything
+export const MobileLoginContentContainer = style([
+    sprinkles({
+        width: "fit",
+        height: "fit",
+        top: "1/2",
+        left: "1/2",
+        position: "absolute",
+        overflow: "auto",
+        transform: "center",
+    }),
+]);

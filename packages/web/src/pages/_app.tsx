@@ -9,7 +9,7 @@ import { DefaultSeo } from "next-seo";
 import "/public/fonts/JetbrainsMono.css";
 import { useRouter } from "next/router";
 import { useAtom } from "jotai";
-import { themeAtom } from "../state/view";
+import { themeAtom } from "../lib/state/view";
 
 export const allowedUnauthPages = ["/login"];
 

@@ -6,8 +6,9 @@ import {
     DesktopLoginContainer,
     DesktopRightContainer,
     DesktopRightContainerButtonContainer,
-    DesktopRightContainerLoginHeader,
+    LoginHeader,
     MobileLoginContainer,
+    MobileLoginContentContainer,
     RightContainerDiscordButton,
     RightContainerDiscordButtonText,
     RightContainerDiscordButtonTextContainer,
@@ -37,6 +38,30 @@ export function Login() {
         };
     }, [mobileViewShown]);
 
+    const loginStuff = (
+        <>
+            {" "}
+            <h1 className={LoginHeader}>Login to Aduitor</h1>
+            <div className={RightContainerDiscordButton}>
+                <p
+                    className={RightContainerDiscordButtonTextContainer}
+                    onClick={() => signIn("discord")}
+                >
+                    <Image
+                        src={DiscordLogoWhite}
+                        alt="Discord icon"
+                        width={26}
+                        height={26}
+                    />
+                    &nbsp;&nbsp;
+                    <span className={RightContainerDiscordButtonText}>
+                        Continue with Discord
+                    </span>
+                </p>
+            </div>
+        </>
+    );
+
     return (
         <div
             className={
@@ -52,39 +77,27 @@ export function Login() {
                     </div>
                 </div>
             )}
-            <div className={DesktopRightContainer}>
-                <h1 className={DesktopRightContainerLoginHeader}>Login</h1>
-                <div className={DesktopRightContainerButtonContainer}>
-                    <div className={RightContainerDiscordButton}>
-                        <p
-                            className={RightContainerDiscordButtonTextContainer}
-                            onClick={() => signIn("discord")}
-                        >
-                            <Image
-                                src={DiscordLogoWhite}
-                                alt="Discord icon"
-                                width={26}
-                                height={26}
-                            />
-                            &nbsp;&nbsp;
-                            <span className={RightContainerDiscordButtonText}>
-                                Continue with Discord
-                            </span>
-                        </p>
+            {mobileViewShown ? (
+                <div className={MobileLoginContentContainer}>{loginStuff}</div>
+            ) : (
+                <div className={DesktopRightContainer}>
+                    <div className={DesktopRightContainerButtonContainer}>
+                        {loginStuff}
                     </div>
-                    {/*<p className={RightContainerNoticeText}>*/}
-                    {/*    Don&apos;t see one you like?{" "}*/}
-                    {/*    <a*/}
-                    {/*        href="https://github.com/Floffah/adiutor/pulls"*/}
-                    {/*        target="_blank"*/}
-                    {/*        rel="noreferrer"*/}
-                    {/*    >*/}
-                    {/*        Open a PR*/}
-                    {/*    </a>*/}
-                    {/*    !*/}
-                    {/*</p>*/}
                 </div>
-            </div>
+            )}
         </div>
     );
 }
+
+//                     {/*<p className={RightContainerNoticeText}>*/}
+//                     {/*    Don&apos;t see one you like?{" "}*/}
+//                     {/*    <a*/}
+//                     {/*        href="https://github.com/Floffah/adiutor/pulls"*/}
+//                     {/*        target="_blank"*/}
+//                     {/*        rel="noreferrer"*/}
+//                     {/*    >*/}
+//                     {/*        Open a PR*/}
+//                     {/*    </a>*/}
+//                     {/*    !*/}
+//                     {/*</p>*/}
