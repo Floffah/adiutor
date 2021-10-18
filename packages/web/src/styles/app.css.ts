@@ -14,7 +14,7 @@ globalStyle("html, body", {
     shapeRendering: "geometricPrecision",
 });
 
-globalStyle("p", {
+globalStyle("p, span, svg", {
     color: vars.colour.text.default,
     fontSize: sizingValues[4],
     lineHeight: sizingValues[7],

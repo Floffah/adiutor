@@ -3,6 +3,7 @@ import { sprinkles } from "../../../styles/sprinkles/sprinkles.css";
 import { vars } from "../../../styles/themes/theme.css";
 import libraryStockImage from "/public/images/zaini-izzuddin-55btQzyDiO8-unsplash.jpg";
 import { colours } from "../../../styles/system/colours.css";
+import { spinAnimation } from "../../../styles/system/animations/spin.css";
 
 // container
 
@@ -117,7 +118,7 @@ export const DesktopRightContainerButtonContainer = style([
 ]);
 
 // the continue with discord button
-export const RightContainerDiscordButton = style([
+export const DiscordButtonContainer = style([
     sprinkles({
         borderRadius: "lg",
     }),
@@ -133,14 +134,22 @@ export const RightContainerDiscordButton = style([
 ]);
 
 // the text and image container inside the discord button
-export const RightContainerDiscordButtonTextContainer = style({
+export const DiscordButtonTextContainer = style({
     margin: "0",
 });
 
 // the actual text inside the discord button container
-export const RightContainerDiscordButtonText = style({
+export const DiscordButtonText = style({
     verticalAlign: "top",
     color: colours.gray100,
+    margin: "0",
+    display: "inline-block",
+});
+
+// the discord image container
+export const DiscordImageContainer = style({
+    margin: "0",
+    display: "inline-block",
 });
 
 // export const RightContainerNoticeText = style({
@@ -162,3 +171,14 @@ export const MobileLoginContentContainer = style([
         transform: "center",
     }),
 ]);
+
+// loading box
+
+export const LoginLoadingBox = style({
+    position: "fixed",
+    top: 0,
+    right: 0,
+    padding: "8px 8px 0 0",
+});
+
+export const LoginLoadingEmoji = style([spinAnimation]);

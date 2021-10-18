@@ -6,19 +6,25 @@ import {
     DesktopLoginContainer,
     DesktopRightContainer,
     DesktopRightContainerButtonContainer,
+    DiscordButtonContainer,
+    DiscordButtonText,
+    DiscordButtonTextContainer,
+    DiscordImageContainer,
     LoginHeader,
+    LoginLoadingBox,
+    LoginLoadingEmoji,
     MobileLoginContainer,
     MobileLoginContentContainer,
-    RightContainerDiscordButton,
-    RightContainerDiscordButtonText,
-    RightContainerDiscordButtonTextContainer,
 } from "./Login.css";
 import DiscordLogoWhite from "/public/images/Discord-Logo-White.svg";
 import Image from "next/image";
 import { signIn } from "next-auth/client";
+import Icon from "@mdi/react";
+import { mdiLoading } from "@mdi/js";
 
 export function Login() {
     const [mobileViewShown, setMobileViewShown] = useState(false);
+    const [showLoading, setShowLoading] = useState(false);
 
     useEffect(() => {
         const checkSize = () => {
@@ -38,26 +44,40 @@ export function Login() {
         };
     }, [mobileViewShown]);
 
+    const loadingBox = (
+        <>
+            {showLoading && (
+                <div className={LoginLoadingBox}>
+                    <Icon
+                        path={mdiLoading}
+                        size={mobileViewShown ? 2 : 1.5}
+                        className={LoginLoadingEmoji}
+                    />
+                </div>
+            )}
+        </>
+    );
     const loginStuff = (
         <>
-            {" "}
             <h1 className={LoginHeader}>Login to Aduitor</h1>
-            <div className={RightContainerDiscordButton}>
-                <p
-                    className={RightContainerDiscordButtonTextContainer}
-                    onClick={() => signIn("discord")}
+            <div className={DiscordButtonContainer}>
+                <div
+                    className={DiscordButtonTextContainer}
+                    onClick={() => {
+                        setShowLoading(true);
+                        signIn("discord");
+                    }}
                 >
                     <Image
                         src={DiscordLogoWhite}
                         alt="Discord icon"
                         width={26}
                         height={26}
+                        className={DiscordImageContainer}
                     />
                     &nbsp;&nbsp;
-                    <span className={RightContainerDiscordButtonText}>
-                        Continue with Discord
-                    </span>
-                </p>
+                    <p className={DiscordButtonText}>Continue with Discord</p>
+                </div>
             </div>
         </>
     );
@@ -78,9 +98,15 @@ export function Login() {
                 </div>
             )}
             {mobileViewShown ? (
-                <div className={MobileLoginContentContainer}>{loginStuff}</div>
+                <>
+                    {loadingBox}
+                    <div className={MobileLoginContentContainer}>
+                        {loginStuff}
+                    </div>
+                </>
             ) : (
                 <div className={DesktopRightContainer}>
+                    {loadingBox}
                     <div className={DesktopRightContainerButtonContainer}>
                         {loginStuff}
                     </div>
