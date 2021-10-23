@@ -1,15 +1,12 @@
 import { AppProps } from "next/app";
 import { FC, useEffect } from "react";
-import "../styles/app.css";
 import { withTRPC } from "@trpc/next";
 import { AppRouter } from "../lib/api/trpc/router";
 import { Provider, useSession } from "next-auth/client";
-import { appContainer } from "../styles/app.css";
 import { DefaultSeo } from "next-seo";
 import "/public/fonts/JetBrainsMono.css";
 import { useRouter } from "next/router";
-import { useAtom } from "jotai";
-import { themeAtom } from "../lib/state/view";
+import "../styles/styles.css";
 
 export const allowedUnauthPages = ["/login"];
 
@@ -57,11 +54,9 @@ const TRPCApp = withTRPC<AppRouter>({
 })(App);
 
 export default function BoundariedApp(p: AppProps) {
-    const [theme] = useAtom(themeAtom);
-
     return (
         <Provider>
-            <div className={`${appContainer} ${theme}`}>
+            <div className="bg-gray-700 fixed top-0 left-0 w-full h-full transition-colors">
                 {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                 {/* @ts-ignore */}
                 <TRPCApp {...p} />

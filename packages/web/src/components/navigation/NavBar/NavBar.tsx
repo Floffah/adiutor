@@ -1,9 +1,7 @@
 import { RefObject } from "react";
 import { useIntersection } from "react-use";
-import { NavBarContainer, NavBarHeader, NavBarImage } from "./NavBar.css";
-import { sprinkles } from "../../../styles/sprinkles/sprinkles.css";
-import { style } from "@vanilla-extract/css";
 import favicon from "/public/favicon.png";
+import { c } from "../../../lib/util/props";
 
 export function IntersectableNavBar(p: {
     headerRef: RefObject<HTMLDivElement>;
@@ -20,23 +18,21 @@ export function IntersectableNavBar(p: {
 function NavBar(p: { showBackground: boolean | null }) {
     return (
         <div
-            className={[
-                NavBarContainer,
-                p.showBackground
-                    ? sprinkles({ backgroundColor: "gray800" })
-                    : style({
-                          backdropFilter: "blur(4px)",
-                      }),
-            ].join(" ")}
+            className={c(
+                "w-full h-12 fixed top-0 left-0",
+                p.showBackground ? "bg-gray-800" : "backdrop-blur-sm",
+            )}
         >
             {/* nextjs image just doesn't fit the use case here, why do they have to wrap the image in loads of spans and divs and dont give us ways to add classnames to them without horrendous workarounds */}
             <img
                 src={favicon.src}
                 height={40}
                 width={40}
-                className={NavBarImage}
+                className="ml-2.5 mt-1 inline-block rounded-full"
             />
-            <h2 className={NavBarHeader}>Adiutor</h2>
+            <h2 className="inline-block align-top ml-2.5 mt-2 text-gray-300 text-2xl">
+                Adiutor
+            </h2>
         </div>
     );
 }
