@@ -60,6 +60,9 @@ module.exports = {
             borderWidth: {
                 7: "7px",
             },
+            inset: {
+                "1/12": `${(1 / 12) * 100}%`,
+            },
 
             backdropBlur: {
                 xs: "2px",
